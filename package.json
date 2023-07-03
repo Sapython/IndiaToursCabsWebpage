@@ -1,0 +1,21 @@
+{
+  "name": "indiatourscabswebpage",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compress:gulp": "gulp compress"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-imagemin": "^7.0.0",
+    "gulp-sharp-responsive": "^0.3.0"
+  }
+}
