@@ -3,11 +3,27 @@
 
 <head>
     <meta charset="utf-8">
-    <title>India Tours Cabs</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="India Tours Cabs" name="keywords">
-    <meta content="India Tours Cabs" name="description">
-    <link rel="manifest" href="/manifest.json" />
+    <!-- Primary Meta Tags -->
+    <title>India Tours Cabs</title>
+    <meta name="title" content="India Tours Cabs" />
+    <meta name="description" content="India Tours Cabs is one of the top-rated travel agencies in my area, Rajasthan, offering affordable vacation packages. If you're thinking about taking a trip nearby, don't hesitate to contact our team for the best travel experience. Enjoy the finest holiday savings by booking with one of the local travel agencies nearby." />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://indiatourscabs.com/" />
+    <meta property="og:title" content="India Tours Cabs" />
+    <meta property="og:description" content="India Tours Cabs is one of the top-rated travel agencies in my area, Rajasthan, offering affordable vacation packages. If you're thinking about taking a trip nearby, don't hesitate to contact our team for the best travel experience. Enjoy the finest holiday savings by booking with one of the local travel agencies nearby." />
+    <meta property="og:image" content="img/compressed/aditya-siva-6rDbvXzIVpQ-unsplash-700.jpg" />
+    <meta name="theme-color" content="#ff386d"/>
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://indiatourscabs.com/" />
+    <meta property="twitter:title" content="India Tours Cabs" />
+    <meta property="twitter:description" content="India Tours Cabs is one of the top-rated travel agencies in my area, Rajasthan, offering affordable vacation packages. If you're thinking about taking a trip nearby, don't hesitate to contact our team for the best travel experience. Enjoy the finest holiday savings by booking with one of the local travel agencies nearby." />
+    <meta property="twitter:image" content="img/compressed/aditya-siva-6rDbvXzIVpQ-unsplash-700.jpg" />
+
+    <link rel="manifest" href="/manifest.webmanifest" />
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
 
@@ -24,7 +40,7 @@
     <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style.min.css" rel="stylesheet">
     <script src="https://code.jivosite.com/widget/Hq58FJ40bX" async></script>
 
     <!-- Google tag (gtag.js) -->
@@ -34,6 +50,41 @@
         gtag('js', new Date());
 
         gtag('config', 'G-2P3FR56WSF');
+        // Reference the serviceWorker.
+        const serviceWorker = navigator.serviceWorker;
+
+        // Register our ServiceWorker script, if serviceWorker is available.
+        if (serviceWorker) {
+            serviceWorker
+                .register("/service-worker.js")
+                .then(() => console.log("ServiceWorker Registered to the Application!"))
+                .catch(() => console.log("Failed to Register the ServiceWorker."));
+        }
+
+        // Create a variable to defer the beforeinstallprompt event.
+        let beforeInstallEvent;
+
+        // Reference the install button from DOM.
+        const installButton = document.getElementById("install");
+
+        // Watch for the beforeinstallevent and defer it.
+        window.addEventListener("beforeinstallprompt", (event) => {
+            event.preventDefault();
+            beforeInstallEvent = event;
+            installButton.style.display = "block";
+        });
+
+        // Prompt for Installation when install button is clicked.
+        installButton.addEventListener("click", () => {
+            beforeInstallEvent
+                .prompt()
+                .then((choice) => {
+                    // Hide the install button as its purpose is over.
+                    if (choice.outcome == "accepted") {
+                        installButton.style.display = "none";
+                    }
+                });
+        });
     </script>
 </head>
 
@@ -78,16 +129,36 @@
     <div class="container-fluid position-relative nav-bar p-0">
         <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
             <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
-                <a href="index.html" class="navbar-brand">
-                    <h1 class="m-0 text-primary">
-                        <span class="flag">
-                            <span>IN</span>
-                            <span>D</span>
-                            <span>IA </span>
-                        </span>
-                    <span class="text-dark">TOURS CABS</span></h1>
-                </a>
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="lineOne">
+                    <a href="index.html" class="navbar-brand">
+                        <h1 class="m-0 text-primary">
+                            <span class="flag">
+                                <span>IN</span>
+                                <span>D</span>
+                                <span>IA </span>
+                            </span>
+                        <span class="text-dark">TOURS CABS</span></h1>
+                    </a>
+                    <address>F1, 133-134, Niwaru Rd, Ashok Nagar, Jhotwara, Jaipur, Rajasthan 302012</address>
+                </span>
+                <!-- <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
+                    <div class="navbar-nav ml-auto py-0">
+                        <a href="index.html" class="nav-item nav-link active">Services</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Services</a>
+                            <div class="dropdown-menu border-0 rounded-0 m-0">
+                                <a href="blog.html" class="dropdown-item">Blog Grid</a>
+                                <a href="single.html" class="dropdown-item">Blog Detail</a>
+                                <a href="destination.html" class="dropdown-item">Destination</a>
+                                <a href="guide.html" class="dropdown-item">Travel Guides</a>
+                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                            </div>
+                        </div>
+                        <a href="contact.html" class="nav-item nav-link">Home</a>
+                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+                    </div>
+                </div> -->
+                <button type="button" class="navbar-toggler" aria-label="Menu Button" data-toggle="collapse" data-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
@@ -120,7 +191,7 @@
         <div id="header-carousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img loading="lazy" class="w-100" src="img/Banner1.jpg" srcset="
+                    <img lclass="w-100" src="img/Banner1.jpg" srcset="
                     img/compressed/Banner1-256.avif 300w, 
                     img/compressed/Banner1-256.webp 300w, 
                     img/compressed/Banner1-256.jpg 300w,
@@ -430,12 +501,12 @@
                     </div>
                 </div>
             </div>
-            <a class="carousel-control-prev" href="#header-carousel" data-slide="prev">
+            <a class="carousel-control-prev" aria-label="Previous Slide" href="#header-carousel" data-slide="prev">
                 <div class="btn btn-dark" style="width: 45px; height: 45px;">
                     <span class="carousel-control-prev-icon mb-n2"></span>
                 </div>
             </a>
-            <a class="carousel-control-next" href="#header-carousel" data-slide="next">
+            <a class="carousel-control-next" aria-label="Next Slide" href="#header-carousel" data-slide="next">
                 <div class="btn btn-dark" style="width: 45px; height: 45px;">
                     <span class="carousel-control-next-icon mb-n2"></span>
                 </div>
@@ -532,8 +603,8 @@
                 </div>
                 <div class="col-lg-6 pt-5 pb-lg-5">
                     <div class="about-text bg-white p-4 p-lg-5 my-lg-5">
-                        <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">About Us</h6>
                         <h1 class="mb-3">We Provide Best Tour Packages In Your Budget</h1>
+                        <h3 class="text-primary text-uppercase" style="letter-spacing: 5px;">About Us</h3>
                         <p> If you're planning a trip to Rajasthan, India, then India Tours Cabs is one the best top travel agency in Rajasthan, India offerings budget travel packages, Book best holidays tours packages and enjoy best holidays deals. Rajasthan is a land of vibrant colors, rich history, and incredible landscapes. At India Tours Cabs, we have years of experience crafting unforgettable itineraries for travelers to Rajasthan. We specialize in creating personalized tours that cater to all interests and preferences, from exploring the historical forts and palaces of Jaipur to experiencing the serene beauty of lakes, farmhouses with personalized itineraries, expert guides, responsible tourism & India Tours Cabs is the best travel agency in India.</p>
                         <p>If you have any questions, please don't hesitate to get in touch with our manager</p>
                         <hr>
@@ -2096,23 +2167,27 @@
                 <p>India Tours Cabs is a Jaipur-based, GST-registered car rental company that opened in 2015 and offers the best prices for self-driving and chauffeur-driven vehicles.</p>
                 <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">Follow Us</h6>
                 <div class="d-flex justify-content-start">
-                    <a class="btn btn-outline-primary btn-square mr-2" href="https://www.tripadvisor.in/Attraction_Review-g304555-d25178355-Reviews-India_Tours_Cabs_Wild_Life_and_Historical_Adventures_Travel_Company-Jaipur_Jaipu.html">
+                    <a class="btn btn-outline-primary btn-square mr-2" aria-label="Facebook" href="https://www.tripadvisor.in/Attraction_Review-g304555-d25178355-Reviews-India_Tours_Cabs_Wild_Life_and_Historical_Adventures_Travel_Company-Jaipur_Jaipu.html">
                         <!-- <i class="fab ri-facebook-fill"></i> -->
                         <i class="ri-tumblr-fill ri-lg"></i>
                     </a>
-                    <a class="btn btn-outline-primary btn-square mr-2" href="https://twitter.com/indiatourscabs">
+                    <a class="btn btn-outline-primary btn-square mr-2" aria-label="Twitter" href="https://twitter.com/indiatourscabs">
                         <i class="fab ri-twitter-fill ri-lg"></i>
                     </a>
-                    <a class="btn btn-outline-primary btn-square mr-2" href="https://www.linkedin.com/in/india-tours-cabs-2165b4278">
+                    <a class="btn btn-outline-primary btn-square mr-2" aria-label="Linkedin" href="https://www.linkedin.com/in/india-tours-cabs-2165b4278">
                         <i class="fab ri-linkedin-fill ri-lg"></i>
                     </a>
-                    <a class="btn btn-outline-primary btn-square mr-2" href="https://instagram.com/indiatourscabs?igshid=NTc4MTIwNjQ2YQ==">
+                    <a class="btn btn-outline-primary btn-square mr-2" aria-label="Instagram" href="https://instagram.com/indiatourscabs?igshid=NTc4MTIwNjQ2YQ==">
                         <i class="fab ri-instagram-fill ri-lg"></i>
                     </a>
-                    <a class="btn btn-outline-primary btn-square mr-2" href="https://medium.com/@indiatourscabs">
+                    <a class="btn btn-outline-primary btn-square mr-2" aria-label="Medium" href="https://medium.com/@indiatourscabs">
                         <i class="ri-medium-fill ri-lg"></i>
                     </a>
                 </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Find us on map</h5>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3556.246081649871!2d75.72614937616332!3d26.95910545809392!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xaea2a93d37733265%3A0xe35fa64141c7e4e5!2sIndia%20Tours%20Cabs!5e0!3m2!1sen!2sin!4v1688475125464!5m2!1sen!2sin" width="100%" height="90%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
                 <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Our Services</h5>
@@ -2126,24 +2201,25 @@
                     <a class="text-white-50" href="#"><i class="ri-arrow-right-s-line ri-lg mr-2"></i></i>Blog</a> -->
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 mb-5">
+            <!-- <div class="col-lg-3 col-md-6 mb-5">
                 <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Usefull Links</h5>
                 <div class="d-flex flex-column justify-content-start">
                     <a class="text-white-50 mb-2" href="contact.html"><i class="ri-arrow-right-s-line ri-lg mr-2"></i></i>Contact Us</a>
-                    <!-- <a class="text-white-50 mb-2" href="#"><i class="ri-arrow-right-s-line ri-lg mr-2"></i></i>Destination</a>
+                    <a class="text-white-50 mb-2" href="#"><i class="ri-arrow-right-s-line ri-lg mr-2"></i></i>Destination</a>
                     <a class="text-white-50 mb-2" href="#"><i class="ri-arrow-right-s-line ri-lg mr-2"></i></i>Services</a>
                     <a class="text-white-50 mb-2" href="#"><i class="ri-arrow-right-s-line ri-lg mr-2"></i></i>Packages</a>
                     <a class="text-white-50 mb-2" href="#"><i class="ri-arrow-right-s-line ri-lg mr-2"></i></i>Guides</a>
                     <a class="text-white-50 mb-2" href="#"><i class="ri-arrow-right-s-line ri-lg mr-2"></i></i>Testimonial</a>
-                    <a class="text-white-50" href="#"><i class="ri-arrow-right-s-line ri-lg mr-2"></i></i>Blog</a> -->
+                    <a class="text-white-50" href="#"><i class="ri-arrow-right-s-line ri-lg mr-2"></i></i>Blog</a>
                 </div>
-            </div>
+            </div> -->
             <div class="col-lg-3 col-md-6 mb-5">
                 <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Contact Us</h5>
+                <h6 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">India Tours Cabs</h6>
                 <p><a href="https://g.co/kgs/AFzgzf"><i class="ri-map-pin-fill mr-2 ri-lg"></i>F1, 133-134, Niwaru Rd, Ashok Nagar, Jhotwara, Jaipur, Rajasthan 302012</a></p>
-                <p><a href="mailto:indiatourscabs@gmail.com"><i class="ri-mail-fill ri-lg mr-2"></i>indiatourscabs@gmail.com</a></p>
                 <p><a href="tel:+917073144441"><i class="ri-phone-fill ri-lg mr-2"></i>+917073144441</a></p>
                 <p onclick="generateWhatsappTextLink('Hello, I wanted to ask something.')" class="d-flex align-items-center text-success"> <i class="ri-whatsapp-fill ri-2x"></i> Chat Now Instantly</p>
+                <p><a href="mailto:indiatourscabs@gmail.com"><i class="ri-mail-fill ri-lg mr-2"></i>indiatourscabs@gmail.com</a></p>
                 <!-- <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">Newsletter</h6>
                 <div class="w-100">
                     <div class="input-group">
@@ -2168,7 +2244,7 @@
 
 
     <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="ri-arrow-up-double-fill ri-lg"></i></a>
+    <a href="#" aria-label="Back To Top" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="ri-arrow-up-double-fill ri-lg"></i></a>
 
 
     <!-- JavaScript Libraries -->

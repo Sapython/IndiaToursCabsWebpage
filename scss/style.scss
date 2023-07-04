@@ -1,6 +1,6 @@
 /******* Bootstrap Theming ********/
 
-$primary: #f25781;
+$primary: #ff386d;
 $secondary: lighten($primary, 50%);
 $light: #FFFFFF;
 $dark: #212121;
@@ -404,3 +404,32 @@ h6,
     }
 
 }
+nav.navbar{
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap:10px;
+    .lineOne{
+        display: flex;
+        flex-direction: column;
+        address{
+            // max-width: 200px;
+            font-size: 12px;
+        }
+    }
+}
+@media (min-width: 992px){
+    .container, .container-lg, .container-md, .container-sm {
+        max-width: 960px;
+    }
+}
+@media (min-width: 1200px){
+    .container, .container-lg, .container-md, .container-sm, .container-xl {
+        max-width: 1140px;
+    }
+}
+@media (min-width: 1300px){
+    .container, .container-lg, .container-md, .container-sm, .container-xl {
+        max-width: 90%;
+    }
+}
+
